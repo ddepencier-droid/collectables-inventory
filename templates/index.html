@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collectables Inventory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Collectables Inventory</p>
+          <h1>Browse the catalog, then mark what you own right on each collectible.</h1>
+          <p class="hero-copy">
+            The catalog is now the main inventory surface, with owned status, quantity,
+            condition, packaging, and notes attached directly to each catalog item.
+          </p>
+        </div>
+        <div class="stats-grid" id="statsGrid">
+          <article class="stat-card">
+            <span class="stat-label">Catalog entries</span>
+            <strong id="statTotal">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Inventoried items</span>
+            <strong id="statOwned">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Net value</span>
+            <strong id="statMissing">$0.00</strong>
+          </article>
+          <article class="stat-card accent">
+            <span class="stat-label">Properties</span>
+            <strong id="statQuantity">0</strong>
+          </article>
+        </div>
+      </header>
+
+      <section class="panel catalog-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="panel-kicker">Catalog</p>
+            <h2>Catalog and ownership browser</h2>
+          </div>
+          <button type="button" class="primary-button" id="openCatalogEditorButton">Catalog update</button>
+        </div>
+
+        <section class="catalog-editor hidden" id="catalogEditorPanel">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-kicker">Data Entry</p>
+              <h2 id="catalogEditorTitle">Add catalog item</h2>
+            </div>
+            <button type="button" class="ghost-button" id="closeCatalogEditorButton">Close</button>
+          </div>
+
+          <form id="catalogItemForm" class="item-form">
+            <input type="hidden" id="catalogItemId" />
+            <div class="field-row">
+              <label>
+                <span>Franchise</span>
+                <input id="catalogEditFranchise" name="franchise" type="text" required />
+              </label>
+              <label>
+                <span>Property</span>
+                <input id="catalogEditProperty" name="property_name" type="text" required />
+              </label>
+            </div>
+            <div class="field-row">
+              <label>
+                <span>Product line</span>
+                <input id="catalogEditProductLine" name="product_line" type="text" required />
+              </label>
+              <label>
+                <span>Manufacturer</span>
+                <input id="catalogEditManufacturer" name="manufacturer" type="text" required />
+              </label>
+            </div>
+            <div class="field-row">
+              <label>
+                <span>Item name</span>
+                <input id="catalogEditItemName" name="item_name" type="text" required />
+              </label>
+              <label>
+                <span>Wave</span>
+                <input id="catalogEditWave" name="wave" type="text" />
+              </label>
+            </div>
+            <div class="field-row">
+              <label>
+                <span>Release year</span>
+                <input id="catalogEditReleaseYear" name="release_year" type="number" min="1900" max="2099" required />
+              </label>
+              <label>
+                <span>Release type</span>
+                <select id="catalogEditReleaseType" name="release_type">
+                  <option value="vintage">Vintage</option>
+                  <option value="modern">Modern</option>
+                  <option value="reissue">Reissue</option>
+                  <option value="vehicle">Vehicle</option>
+                  <option value="playset">Playset</option>
+                  <option value="accessory">Accessory</option>
+                </select>
+              </label>
+            </div>
+            <div class="field-row">
+              <label>
+                <span>Source name</span>
+                <input id="catalogEditSourceName" name="source_name" type="text" placeholder="Manual" />
+              </label>
+              <label>
+                <span>Source URL</span>
+                <input id="catalogEditSourceUrl" name="source_url" type="url" />
+              </label>
+            </div>
+            <div class="field-row">
+              <label>
+                <span>Loose image URL</span>
+                <input id="catalogEditImageUrl" name="image_url" type="url" />
+              </label>
+              <label>
+                <span>Packaged image URL</span>
+                <input id="catalogEditPackagedImageUrl" name="packaged_image_url" type="url" />
+              </label>
+            </div>
+            <label>
+              <span>Notes</span>
+              <textarea id="catalogEditNotes" name="notes" rows="4"></textarea>
+            </label>
+            <div class="form-actions">
+              <button type="submit" class="primary-button" id="catalogEditorSubmitButton">Save catalog item</button>
+              <button type="button" class="ghost-button" id="newCatalogItemButton">New item</button>
+              <p id="catalogEditorMessage" class="form-message" aria-live="polite"></p>
+            </div>
+          </form>
+        </section>
+
+        <div class="catalog-overview">
+          <article class="stat-card mini">
+            <span class="stat-label">Catalog entries</span>
+            <strong id="catalogStatTotal">0</strong>
+          </article>
+          <article class="stat-card mini">
+            <span class="stat-label">Franchises</span>
+            <strong id="catalogStatFranchises">0</strong>
+          </article>
+          <article class="stat-card mini">
+            <span class="stat-label">Vintage</span>
+            <strong id="catalogStatVintage">0</strong>
+          </article>
+          <article class="stat-card mini">
+            <span class="stat-label">Modern / Reissue</span>
+            <strong id="catalogStatModern">0</strong>
+          </article>
+        </div>
+
+        <div class="toolbar catalog-toolbar">
+          <label>
+            <span>Search</span>
+            <input id="catalogSearchInput" type="search" placeholder="Search franchise, line, property, item..." />
+          </label>
+          <label>
+            <span>Franchise</span>
+            <select id="catalogFranchiseFilter">
+              <option value="all">All franchises</option>
+            </select>
+          </label>
+          <label>
+            <span>Property</span>
+            <select id="catalogPropertyFilter">
+              <option value="all">All properties</option>
+            </select>
+          </label>
+          <label>
+            <span>Product line</span>
+            <select id="catalogProductLineFilter">
+              <option value="all">All product lines</option>
+            </select>
+          </label>
+          <label>
+            <span>Manufacturer</span>
+            <select id="catalogManufacturerFilter">
+              <option value="all">All manufacturers</option>
+            </select>
+          </label>
+          <label>
+            <span>Release Type</span>
+            <select id="catalogReleaseTypeFilter">
+              <option value="all">All releases</option>
+              <option value="vintage">Vintage</option>
+              <option value="reissue">Reissue</option>
+              <option value="modern">Modern</option>
+            </select>
+          </label>
+          <label>
+            <span>Owned</span>
+            <select id="catalogOwnedFilter">
+              <option value="all">All rows</option>
+              <option value="owned">Owned</option>
+              <option value="missing">Missing</option>
+            </select>
+          </label>
+          <label>
+            <span>Condition</span>
+            <select id="catalogConditionFilter">
+              <option value="all">All conditions</option>
+              {% for condition in default_conditions %}
+              <option value="{{ condition }}">{{ condition }}</option>
+              {% endfor %}
+              <option value="Mixed">Mixed</option>
+              <option value="Packaged">Packaged</option>
+            </select>
+          </label>
+          <label>
+            <span>Year From</span>
+            <input id="catalogYearFrom" type="number" min="1970" max="2099" placeholder="1970" />
+          </label>
+          <label>
+            <span>Year To</span>
+            <input id="catalogYearTo" type="number" min="1970" max="2099" placeholder="2024" />
+          </label>
+        </div>
+
+        <div class="catalog-viewbar">
+          <label class="checkbox-row catalog-toggle">
+            <input id="catalogVariantToggle" type="checkbox" checked />
+            <span>Show variants individually</span>
+          </label>
+          <button type="button" class="ghost-button" id="refreshPricingButton">Refresh prices</button>
+        </div>
+
+        <div class="catalog-breakdown" id="catalogBreakdown"></div>
+        <div id="catalogMessage" class="catalog-message" aria-live="polite"></div>
+        <div id="catalogList" class="catalog-list"></div>
+      </section>
+    </div>
+
+    <template id="catalogCardTemplate">
+      <article class="catalog-card">
+        <span class="catalog-status-dot" aria-hidden="true"></span>
+
+        <div class="catalog-media-grid hidden">
+          <figure class="catalog-card-media catalog-loose-media hidden">
+            <img class="catalog-image catalog-loose-image" alt="" loading="lazy" />
+            <p class="catalog-media-status catalog-loose-status" aria-live="polite"></p>
+            <figcaption class="catalog-media-label">Loose</figcaption>
+          </figure>
+          <figure class="catalog-card-media catalog-packaged-media hidden">
+            <img class="catalog-image catalog-packaged-image" alt="" loading="lazy" />
+            <p class="catalog-media-status catalog-packaged-status" aria-live="polite"></p>
+            <figcaption class="catalog-media-label">In package</figcaption>
+          </figure>
+        </div>
+
+        <div class="item-card-top">
+          <div>
+            <p class="item-series catalog-franchise"></p>
+            <h3 class="item-name catalog-item-name"></h3>
+          </div>
+          <span class="status-pill catalog-release-type"></span>
+        </div>
+
+        <div class="catalog-grid">
+          <div>
+            <span class="catalog-label">Property</span>
+            <p class="catalog-value catalog-property"></p>
+          </div>
+          <div>
+            <span class="catalog-label">Product line</span>
+            <p class="catalog-value catalog-product-line"></p>
+          </div>
+          <div>
+            <span class="catalog-label">Manufacturer</span>
+            <p class="catalog-value catalog-manufacturer"></p>
+          </div>
+          <div>
+            <span class="catalog-label">Release year</span>
+            <p class="catalog-value catalog-release-year"></p>
+          </div>
+          <div>
+            <span class="catalog-label">Wave</span>
+            <p class="catalog-value catalog-wave"></p>
+          </div>
+          <div>
+            <span class="catalog-label">Source</span>
+            <p class="catalog-value"><a class="catalog-source-link" target="_blank" rel="noreferrer">View source</a></p>
+          </div>
+        </div>
+
+        <div class="catalog-ownership">
+          <div>
+            <span class="catalog-label">Owned</span>
+            <p class="catalog-value catalog-owned-quantity"></p>
+          </div>
+          <div>
+            <span class="catalog-label">Complete</span>
+            <p class="catalog-value catalog-complete-count"></p>
+          </div>
+          <div>
+            <span class="catalog-label">Original packaging</span>
+            <p class="catalog-value catalog-packaging-count"></p>
+          </div>
+          <div>
+            <span class="catalog-label">Sealed</span>
+            <p class="catalog-value catalog-sealed-count"></p>
+          </div>
+        </div>
+
+        <div class="item-footer">
+          <form class="quick-counts-form">
+            <label>
+              <span>Owned</span>
+              <input class="quick-owned-input" type="number" min="0" step="1" />
+            </label>
+            <label>
+              <span>Complete</span>
+              <input class="quick-complete-input" type="number" min="0" step="1" />
+            </label>
+            <label>
+              <span>Original packaging</span>
+              <input class="quick-packaging-input" type="number" min="0" step="1" />
+            </label>
+            <label>
+              <span>Sealed</span>
+              <input class="quick-sealed-input" type="number" min="0" step="1" />
+            </label>
+            <label class="quick-owned-notes-label">
+              <span>Owned item notes</span>
+              <textarea class="quick-owned-notes-input" rows="3" placeholder="Specific observations about your copy"></textarea>
+            </label>
+            <button type="submit" class="secondary-button quick-counts-button">Save</button>
+          </form>
+          <div class="item-actions">
+            <button type="button" class="ghost-button catalog-record-edit-button">Edit catalog</button>
+          </div>
+        </div>
+
+        <div class="catalog-pricing">
+          <div>
+            <span class="catalog-label">Market range</span>
+            <p class="catalog-value catalog-price-range"></p>
+          </div>
+          <div>
+            <span class="catalog-label">Price source</span>
+            <p class="catalog-value catalog-price-source"></p>
+          </div>
+          <div>
+            <span class="catalog-label">Updated</span>
+            <p class="catalog-value catalog-price-updated"></p>
+          </div>
+          <div>
+            <span class="catalog-label">Link</span>
+            <p class="catalog-value"><a class="catalog-price-link" target="_blank" rel="noreferrer">Open source</a></p>
+          </div>
+        </div>
+
+        <div class="catalog-variant hidden">
+          <span class="catalog-label">Variant</span>
+          <p class="catalog-value catalog-variant-text"></p>
+        </div>
+
+        <div class="owned-notes-display hidden">
+          <span class="catalog-label">Owned item notes</span>
+          <p class="catalog-value owned-notes-text"></p>
+        </div>
+
+        <p class="item-notes catalog-notes"></p>
+      </article>
+    </template>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  </body>
+</html>

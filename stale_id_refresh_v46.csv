@@ -1,0 +1,97 @@
+Item,old_id,new_id,matched_catalog_item_name,candidate_count,chosen_score
+Princess Leia,8333532,8442725,Princess Leia Organa Star Wars,1,0
+Luke Skywalker,8333525,8442718,Luke Skywalker Star Wars,2,-3
+Jawa,8333523,8442716,Jawa Star Wars,2,9
+Han Solo,8333521,8442714,Han Solo Star Wars,2,6
+Death Squad Commander,8333516,8442709,Death Squad Commander Star Wars,1,0
+Darth Vader,8333515,8442708,Darth Vader Star Wars,1,0
+Chewbacca,8333514,8442707,Chewbacca Star Wars,1,0
+Ben (Obi-Wan) Kenobi,8333529,8442722,Obi-Wan Kenobi Obi-Wan (Ben) Kenobi,2,0
+Artoo-Detoo (R2-D2),8333533,8442726,R2-D2 Star Wars,1,0
+Sand People,8333539,8442732,Tusken Raider Sand People,2,-2
+See-Threepio (C-3PO),8333513,8442706,C-3PO See-Threepio,1,0
+Stormtrooper,8333538,8442731,Stormtrooper Star Wars,1,0
+Death Star Droid,8333517,8442710,Death Star Droid Star Wars,1,0
+Walrus Man,8333531,8442724,Ponda Baba Walrusman,1,0
+Snaggletooth,8333535,8442728,Snaggletooth Star Wars,1,0
+R5-D4,8333534,8442727,R5-D4 Star Wars,1,0
+Power Droid,8333519,8442712,Gonk Droid Power Droid,1,0
+Luke Skywalker: X-wing Pilot,8333527,8442720,Luke Skywalker X-Wing Pilot,1,0
+Hammerhead,8333528,8442721,Momaw Nadon Hammerhead,1,0
+Greedo,8333520,8442713,Greedo Star Wars,1,0
+Boba Fett,8333547,8442740,Boba Fett,2,3
+Lando Calrissian,8333562,8442755,Lando Calrissian The Empire Strikes Back,2,2
+Imperial Stormtrooper (Hoth Battle Gear),8333572,8442765,Snowtrooper Imperial Stormtrooper (Hoth Battle Gear),1,0
+IG-88,8333559,8442752,IG-88 Bounty Hunter,1,0
+Han Solo (Hoth Outfit),8333556,8442749,Han Solo Hoth Outfit,1,0
+FX-7,8333554,8442747,FX-7 Medical Droid,1,0
+Bossak (Bounty Hunter),8333552,8442745,Bossk Bounty Hunter,1,0
+Leia Organa (Bespin Gown),8333567,8442760,Princess Leia Organa Bespin Gown,2,0
+Bespin Security Guard,8333551,8442744,Bespin Security Guard The Empire Strikes Back,2,0
+Luke Skywalker (Bespin Fatigues),8333565,8442758,Luke Skywalker Bespin Fatigues,2,1
+Rebel Soldier (Hoth Battle Gear),8333558,8442751,Hoth Rebel Trooper Rebel Soldier (Hoth Battle Gear),1,0
+Yoda,8333574,8442767,Yoda The Jedi Master,2,5
+Ugnaught,8333573,8442766,Ugnaught The Empire Strikes Back,1,0
+Rebel Commander,8333571,8442764,Rebel Commander The Empire Strikes Back,1,0
+Lobot,8333563,8442756,Lobot Lando's Aid,1,0
+Leia (Hoth Outfit),8333569,8442762,Princess Leia Organa Hoth Outfit,1,0
+Imperial Commander,8333560,8442753,Imperial Commander The Empire Strikes Back,1,0
+Han Solo (Bespin Outfit),8333555,8442748,Han Solo Bespin Outfit,1,0
+Dengar,8333553,8442746,Dengar The Empire Strikes Back,1,0
+AT-AT Driver,8333550,8442743,AT-AT Driver The Empire Strikes Back,1,0
+2-1B,8333548,8442741,2-1B Two-OneBee,1,0
+Luke Skywalker (Hoth Battle Gear),8333566,8442759,Luke Skywalker Hoth Battle Gear,1,0
+C-3PO (Removable Limbs),8333582,8442775,C-3PO Removable Limbs,1,0
+Bespin Security Guard,8333551,8442744,Bespin Security Guard The Empire Strikes Back,2,0
+AT-AT Commander,8333549,8442742,AT-AT Commander The Empire Strikes Back,1,0
+Artoo-Detoo (R2-D2) (with Sensorscope),8333578,8442771,R2-D2 With Sensorscope,1,0
+(Twin-Pod) Cloud Car Pilot,8333577,8442770,Cloud Car Pilot Twin Pod,1,0
+Zuckuss,8333579,8442772,Zuckuss 4-LOM,1,0
+4-LOM,8333581,8442774,4-LOM Zuckuss,1,0
+Imperial Tie Fighter Pilot,8333583,8442776,Tie Fighter Pilot The Empire Strikes Back,1,0
+Weequay,8333608,8442801,Weequay Return Of The Jedi,1,0
+Squid Head,8333607,8442800,Tessek Squid Head,1,0
+Ree-Yees,8333604,8442797,Ree-Yees Return Of The Jedi,1,0
+Rebel Commando,8333590,8442783,Endor Rebel Soldier Return Of The Jedi,1,0
+Pricess Leia Organa (Boushh Disguise),8333603,8442796,Princess Leia Organa Boushh Disguise,1,0
+Nien Nunb,8333601,8442794,Nien Nunb Return Of The Jedi,1,0
+Luke Skywalker (Jedi Knight Outfit),8333599,8442792,Luke Skywalker Jedi Knight Outfit,2,5
+Lando Calrissian (Skiff Guard Disguise),8333596,8442789,Lando Calrissian Skiff Guard Disguise,1,0
+Klaatu,8333594,8442787,Klaatu Return Of The Jedi,1,0
+General Madine,8333592,8442785,General Madine Return Of The Jedi,1,0
+Gamorrean Guard,8333591,8442784,Gamorrean Guard Return Of The Jedi,1,0
+Emperor's Royal Guard,8333589,8442782,Emperor's Royal Guard Return Of The Jedi,1,0
+Chief Chirpa,8333587,8442780,Chief Chirpa Return Of The Jedi,1,0
+Biker Scout,8333586,8442779,Biker Scout Return Of The Jedi,1,0
+Logray (Ewok Medicine Man),8333597,8442790,Logray Ewok Medicine Man,1,0
+Bib Fortuna,8333585,8442778,Bib Fortuna Return Of The Jedi,1,0
+Admiral Ackbar,8333580,8442773,Admiral Ackbar Return Of The Jedi,1,0
+8D8,8333584,8442777,8D8 Return Of The Jedi,1,0
+AT-ST Driver,8333609,8442802,AT-ST Driver Return Of The Jedi,1,0
+B-Wing Pilot,8333610,8442803,B-Wing Pilot Return Of The Jedi,1,0
+Han Solo (Trench Coat),8333611,8442804,Han Solo In Trench Coat,2,0
+Klaatu (Skiff Guard Outfit),8333595,8442788,Klaatu Skiff Guard Outfit,1,0
+Wicket W. Warrick,8333618,8442811,Wicket Wicket W. Warrick,1,0
+The Emperor,8333613,8442806,Palpatine (Darth Sidious) The Emperor,1,0
+Teebo,8333617,8442810,Teebo Return Of The Jedi,1,0
+Rancor Keeper,8333616,8442809,Rancor Keeper Return Of The Jedi,1,0
+Prune Face,8333615,8442808,Prune Face Orrimaarko,1,0
+Princess Leia Organa (in Combat Poncho),8333614,8442807,Princess Leia Organa In Combat Poncho,1,0
+Nikto,8333602,8442795,Nikto Return Of The Jedi,1,0
+Paploo,8333624,8442817,Paploo Return Of The Jedi,1,0
+Lumat,8333648,8442841,Lumat Return Of The Jedi,1,0
+Imperial Dignitary,8333622,8442815,Imperial Dignitary Return Of The Jedi,1,0
+Han Solo (Carbonite Chamber),8333621,8442814,Han Solo In Carbonite Chamber,1,0
+EV-9D9,8333644,8442837,EV-9D9 Return Of The Jedi,1,0
+Barada,8333645,8442838,Kithaba Barada,1,0
+A-Wing Pilot,8333619,8442812,A-Wing Pilot Return Of The Jedi,1,0
+Artoo-Detoo (R2-D2) with pop-up Lightsaber,8333649,8442842,R2-D2 With Pop-Up Lightsaber,1,0
+Anakin Skywalker,8333643,8442836,Anakin Skywalker Return Of The Jedi,1,0
+Amanaman,8333642,8442835,Amanaman Return Of The Jedi,1,0
+Imperial Gunner,8333620,8442813,Death Star Gunner Imperial Gunner,1,0
+Lando Calrissian (General Pilot),8333646,8442839,Lando Calrissian General Pilot,1,0
+Luke Skywalker (Battle Poncho),8333647,8442840,Luke Skywalker In Battle Poncho,1,0
+Luke Skywalker (Imperial Stormtrooper Outfit),8333623,8442816,Luke Skywalker Imperial Stormtrooper Outfit,1,0
+Warok,8333651,8442844,Warok Return Of The Jedi,1,0
+Romba,8333650,8442843,Romba Return Of The Jedi,1,0
+Yak Face,8333652,8442845,Yak Face Saelt-Marae,1,0
